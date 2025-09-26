@@ -84,7 +84,12 @@ service uhttpd reload
     -   Update Lists
     -   Install: `luci-proto-wireguard`
     -   Reboot
-2.  Firewall Setup:
+2.  Go to **Network → Interfaces**
+    -   Add new interface
+    -   Name → `wg0`
+    -   Protocol → **WireGuard VPN**
+	-   Create interface
+3.  Firewall Setup:
     -   Go to **Network → Firewall**
     -   Add Zone:
         -   Name → `vpn`
@@ -92,8 +97,8 @@ service uhttpd reload
         -   ✔ MSS Clamping
         -   Covered Networks → `wg0`
 		-   Allow forward from source zones → `lan`
-3.  LAN Forwarding:
-    -   Edit `lan` → Allow forward to destination zones → `wg0`
+    -   Lan Forwarding:
+		-   Edit `lan` → Allow forward to destination zones → `wg0`
 4.  Kill Switch Rule:
     -   Go to **Traffic Rules**
     -   Add Rule:
@@ -101,11 +106,6 @@ service uhttpd reload
         -   Source Zone → `lan`
         -   Destination Zone → `wan`
         -   Action → **drop**
-5.  Go to **Network → Interfaces**
-    -   Add new interface
-    -   Name → `wg0`
-    -   Protocol → **WireGuard VPN**
-	-   Create interface
 5.  Go again to **Network → Interfaces**
     -   Edit interface with Name → `wg0`
     -   Go to `Firewall Settings`
