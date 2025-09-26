@@ -99,18 +99,18 @@ service uhttpd reload
 		-   Allow forward from source zones → `lan`
     -   Lan Forwarding:
 		-   Edit `lan` → Allow forward to destination zones → `wg0`
-4.  Kill Switch Rule:
+4.  Go again to **Network → Interfaces**
+    -   Edit interface with Name → `wg0`
+    -   Go to `Firewall Settings`
+    -   Create / Assign firewall-zone → `vpn` (see step 2)
+	-   Save & Apply
+5.  Kill Switch Rule (Optional):
     -   Go to **Traffic Rules**
     -   Add Rule:
         -   Name → `vpn-killswitch`
         -   Source Zone → `lan`
         -   Destination Zone → `wan`
         -   Action → **drop**
-5.  Go again to **Network → Interfaces**
-    -   Edit interface with Name → `wg0`
-    -   Go to `Firewall Settings`
-    -   Create / Assign firewall-zone → `vpn` (see step 2)
-	-   Save & Apply
 
 ------------------------------------------------------------------------
 
